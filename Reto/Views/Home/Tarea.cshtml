@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Tarea";
+}
+
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>Aqui se puede realizar el registro y listado de tareas</p>
+
+<div id="app" class="box-body">
+    <p>
+        <button class="btn  btn-rounded btn-primary" @@click="nuevo" id="btnNuevo">Nuevo</button>
+    </p>
+    <table class="table table-bordered table-hover table-striped" id="tablaDatos">
+        <thead>
+            <tr>
+                <th>ID Tarea</th>
+                <th>Titulo</th>
+                <th>Fecha de Inicio</th>
+                <th>Fecha de Cierre</th>
+                <th>Estado</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="tablaDatosBody">
+        </tbody>
+
+    </table>
+
+    <!--  MODAL PARA HACER EL REGISTRO  -->
+
+    <div class="modal" tabindex="-1" role="dialog" id="mdlUsuario">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" id="mdlheader">
+                    <h5 class="modal-title">Registro de Traea</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" id="btnClose">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="mdlbody">
+                    <p><b>Id:</b>   <br /> <input type="text" placeholder="Ingrese su id" class="form-control input-lg" id="txtID"/></p>
+                    <p><b>Nombre:</b>   <br /> <input type="text" placeholder="Ingrese nombre de tarea" class="form-control input-lg" id="txtNombre" required /></p>
+                    <p><b>Fecha y Hora:</b>   <br /> <output type="datetime" class="form-control output-lg" id="fecha" /></p>
+                    <div class="modal-footer" id="mdlbotn">
+                        <button type="button" class="btn btn-rounded btn-primary" @@click="registrar" id="btnRegistrar">Registrar</button>
+                        <button type="button" class="btn btn-rounded btn-danger" @*@@click="registrar"*@ id="btnCerrar">Cerrar</button>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+
+    <script src="~/Scripts/nuevo.js"></script>
+
+
+
+
+</div>
+
