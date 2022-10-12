@@ -23,7 +23,7 @@ namespace Reto.Controllers
         {
             lisTarea.Add(new TareaDt { 
                 Id = 1,
-           Nombre = "Jose",
+           Nombre = "Tarea Uno",
            FechaI = new DateTime(2022, 10, 10, 15, 25, 50), //crear fecha
            FechaF = DateTime.Now, //fecha del momento en que se corre
             Estado = true
@@ -32,7 +32,7 @@ namespace Reto.Controllers
             lisTarea.Add(new TareaDt
             {
                 Id = 2,
-                Nombre = "Abel",
+                Nombre = "Tarea Dos",
                 FechaI = new DateTime(2022, 10, 10, 15, 25, 50), //crear fecha
                 FechaF = DateTime.Now, //fecha del momento en que se corre
                 Estado = true
@@ -51,7 +51,7 @@ namespace Reto.Controllers
                 lisTarea.Add(new TareaDt
                 {
                     Id = 1,
-                    Nombre = "Jose",
+                    Nombre = "Tarea Uno",
                     FechaI = new DateTime(2022, 10, 10, 15, 25, 50), //crear fecha
                     FechaF = DateTime.Now, //fecha del momento en que se corre
                     Estado = true
@@ -60,7 +60,7 @@ namespace Reto.Controllers
                 lisTarea.Add(new TareaDt
                 {
                     Id = 2,
-                    Nombre = "Abel",
+                    Nombre = "Tarea Dos",
                     FechaI = new DateTime(2022, 10, 10, 15, 25, 50), //crear fecha
                     FechaF = DateTime.Now, //fecha del momento en que se corre
                     Estado = true
@@ -91,9 +91,11 @@ namespace Reto.Controllers
         [HttpPost]
         public JsonResult Agregar(TareaDt objTarea)
         {
+            int contador= lisTarea.Count;
+
             lisTarea.Add(new TareaDt
             {
-                Id = objTarea.Id++,
+                Id = contador +1,
                 Nombre = objTarea.Nombre,
                 FechaI = DateTime.Now,
                 //FechaF = DateTime.Now, 

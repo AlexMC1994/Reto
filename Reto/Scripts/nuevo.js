@@ -22,7 +22,7 @@ function LlenadoDeDatos() {
                     "<td>" + datos.Estado + "</td>" +
                     "<td><button class=\"btn btn-rounded btn-primary\" id=\"btnEditar" + datos.Id + "\" onclick=editar(" + datos.Id + ")> Editar </button>" +
                     "<button class=\"btn btn-rounded btn-success\" id=\"btnFinalizar" + datos.Id +  "\" onclick=finalizar(" + datos.Id + ")> Finalizar </button>" +
-                    "<button class=\"btn btn-rounded btn-danger\" id=\"btnEliminar\" onclick=eliminar(" + datos.Id + ")> Eliminar </button></td></tr>");
+                    "<button class=\"btn btn-rounded btn-danger\" id=\"btnEliminar" + datos.Id + "\"onclick=eliminar(" + datos.Id + ")> Eliminar </button></td></tr>");
             })
         },
         error: function (error) {
@@ -36,15 +36,19 @@ function LlenadoDeDatos() {
 var btnNuevo = document.getElementById("btnNuevo");
 btnNuevo.onclick = function () {
     $('#mdlUsuario').modal('show');
+    $("#txtId").val(" ");
 }
 
 var btnRegistrar = document.getElementById("btnRegistrar");
 btnRegistrar.onclick = function () {
-    LlenadoDeDatos();
+    registrar();
 }
 
-function registrar() {
-    $("#txtId").val("");
+function registrar(id) {
+    /*$("#txtId").val("");*/
+    let recibe = $("#txtNombre").val();
+
+
     $.ajax({
         type: "POST",
         url: "../Home/Agregar",
@@ -53,22 +57,20 @@ function registrar() {
         },
         dataType: "json",
         success: function (data) {
-            $("#txtId").val(data.Id);
+           /* $("#txtId").val(data.Id);*/
             $("#txtNombre").val(data.Nombre);
+            $("fecha").val(data.FechaI);
+            $("fecha").val(data.FechaF);
             LlenadoDeDatos()
         },
         error: function (error) {
         }
     })
-    $('#mdlUsuario').modal('hide');
+    /*$('#mdlUsuario').modal('hide');*/
 }
 
-
-
-
-
 function editar(id) {
-    $("#txtId").val("");
+    /*$("#txtId").val("");*/
     $.ajax({
         type: "POST",
         url: "../Home/Editar",
@@ -84,7 +86,7 @@ function editar(id) {
         error: function (error) {
         }
     })
-    $('#mdlUsuario').modal('show');
+    $('#mdlUsua').modal('show');
 }
 
 function finalizar(id) {
@@ -101,8 +103,8 @@ function eliminar(id) {
         },
         dataType: "json",
         success: function (data) {
-            LlenadoDeDatos()
-            alert(data.Id)
+            $("#txtId").val(data.Id);
+            LlenadoDeDatos();
         },
         error: function (error) {
            alert("error")
